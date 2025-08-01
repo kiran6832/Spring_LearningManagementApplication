@@ -19,19 +19,7 @@ spring:
           filters:
             - AuthenticationFilter
 
-        - id: enrollment-service
-          uri: lb://enrollment-service
-          predicates:
-            - Path=/api/enrollments/**
-          filters:
-            - AuthenticationFilter
-
-        - id: content-service
-          uri: lb://content-service
-          predicates:
-            - Path=/api/contents/**
-          filters:
-            - AuthenticationFilter
+       
 
 jwt:
   secret: kirankumar6839
