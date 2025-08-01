@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - AuthenticationFilter
+
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/api/courses/**
+          filters:
+            - AuthenticationFilter
+
+        - id: enrollment-service
+          uri: lb://enrollment-service
+          predicates:
+            - Path=/api/enrollments/**
+          filters:
+            - AuthenticationFilter
+
+        - id: content-service
+          uri: lb://content-service
+          predicates:
+            - Path=/api/contents/**
+          filters:
+            - AuthenticationFilter
+
+jwt:
+  secret: kirankumar6839
