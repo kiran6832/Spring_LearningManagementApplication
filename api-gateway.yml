@@ -8,18 +8,15 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/api/users/**
+            - Path=/users/**
           filters:
             - AuthenticationFilter
 
         - id: course-service
           uri: lb://course-service
           predicates:
-            - Path=/api/courses/**
+            - Path=/courses/**
           filters:
             - AuthenticationFilter
 
        
-
-jwt:
-  secret: kirankumar6839
