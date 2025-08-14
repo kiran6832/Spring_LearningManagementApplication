@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+          filters:
+            - AuthenticationFilter
+
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/courses/**
+          filters:
+            - AuthenticationFilter
+
+       
